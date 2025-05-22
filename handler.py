@@ -96,7 +96,8 @@ class MetricsHandler:
             usr = usr,
             pwd = pwd,
             port = port,
-            metrics_type = self.metrics_type
+            metrics_type = self.metrics_type,
+            health_metrics = self._config["health_metrics"]
         ) as registry:
 
             # open a session with the remote board

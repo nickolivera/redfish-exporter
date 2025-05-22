@@ -370,7 +370,7 @@ class HealthCollector():
             current_labels
         )
 
-        for url_key in ["Processors", "Storage", "Chassis", "Power", "Thermal", "Memory"]:
+        for url_key in self.col.health_metrics:
             self.collect_health_data(url_key)
 
     def __exit__(self, exc_type, exc_val, exc_tb):

@@ -1,6 +1,13 @@
 listen_port: 9220
 timeout: 10
 job: 'redfish-myjob'
+health_metrics:
+  - "Processors"
+  - "Storage"
+  - "Chassis"
+  - "Power"
+  - "Thermal"
+  - "Memory"
 targets:
   server1-example-com:
     host: server1.example.com

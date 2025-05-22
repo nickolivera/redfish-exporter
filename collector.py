@@ -16,7 +16,7 @@ class RedfishMetricsCollector:
     def __enter__(self):
         return self
 
-    def __init__(self, config, target, host, usr, pwd, port, metrics_type):
+    def __init__(self, config, target, host, usr, pwd, port, metrics_type, health_metrics):
         self.target = target
         self.host = host
         self.port = port
@@ -27,12 +27,12 @@ class RedfishMetricsCollector:
         self.metrics_type = metrics_type
 
         self._timeout = int(os.getenv("TIMEOUT", config.get('timeout', 10)))
-        self.labels = {"host": self.host, "port": str(self.port), "target": self.target}
+        self.labels = {"target": self.target, "host": self.host, "port": str(self.port)}
         self._redfish_up = 0
         self._response_time = 0
         self._last_http_code = 0
         self.powerstate = 0
-
+        self.health_metrics = health_metrics
         self.urls = {
             "Systems": "",
             "SessionService": "",
